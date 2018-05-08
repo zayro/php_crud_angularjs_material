@@ -1,5 +1,5 @@
 # Archivos analizar
-./backend/*.php linguist-vendored=true
+./backend/*.php linguist-vendored
 
 # ignora lenguaje programacion
 *.html linguist-detectable=false
