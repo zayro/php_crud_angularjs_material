@@ -1,0 +1,41 @@
+<md-content>
+
+
+    <div class="mdl-grid" ng-controller="controlador" ng-cloak>
+
+        <!-- tabla -->
+        <i ng-click="dialog($event, 'add.html', ''); " class="material-icons ">add</i>
+
+        <md-table-container>
+            <table md-table md-progress="promise">
+                <thead md-head md-order="ordenar">
+                    <tr md-row>
+
+                        <th md-column md-numeric><span>id</span></th>
+                        <th md-column md-order-by="nombre">nombre</th>
+                        <th md-column md-numeric>identificacion</th>
+                        <th md-column>acciones</th>
+
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row ng-repeat="dato in consulta | orderBy: ordenar">
+                        <td md-cell>{{dato.id | number: 0}}</td>
+                        <td md-cell>{{dato.nombre}}</td>
+                        <td md-cell>{{dato.identificacion | number: 0}}</td>
+                        <td md-cell><i ng-click="eliminar(dato.id) " class="material-icons ">delete</i>
+                            <i ng-click="dialog($event, 'update.html',dato); " class="material-icons ">update</i>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+
+
+
+
+    </div>
+
+</md-content>

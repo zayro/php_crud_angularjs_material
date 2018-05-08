@@ -1,0 +1,60 @@
+<md-content>
+
+
+    <div class="mdl-grid" ng-controller="controlador" ng-cloak>
+
+        <md-toolbar class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+
+                <md-icon md-svg-icon="magnify"></md-icon>
+
+                <form flex name="filter.form" class="flex">
+                    <md-input-container md-no-float class="md-block">
+                        <input type="text" ng-model="filter.search" placeholder="busqueda" style="margin-top: 20px;">
+                    </md-input-container>
+                </form>
+
+                <md-button class="md-button" md-colors="{'background': 'grey-700'}" type="button" ng-click="filter.show = false">
+                    <md-icon md-svg-icon="close"></md-icon>
+                    <div class="md-ripple-container"></div>
+                </md-button>
+
+            </div>
+
+        </md-toolbar>
+
+        <!-- tabla -->
+        <i ng-click="dialog($event, 'add.html', ''); " class="material-icons ">add</i>
+
+        <md-table-container>
+            <table md-table md-progress="promise">
+                <thead md-head md-order="ordenar">
+                    <tr md-row>
+
+                        <th md-column md-numeric><span>id</span></th>
+                        <th md-column>proveedor</th>
+                        <th md-column md-order-by="producto">producto</th>
+                        <th md-column>cantidad</th>
+                        <th md-column>acciones</th>
+
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row ng-repeat="dato in consulta | orderBy: ordenar">
+                        <td md-cell>{{dato.id_bodega | number: 0}}</td>
+                        <td md-cell>{{dato.proveedor}}</td>
+                        <td md-cell>{{dato.producto}}</td>
+                        <td md-cell>{{dato.cantidad | number: 0}}</td>
+                        <td md-cell><i ng-click="eliminar(dato.id_bodega) " class="material-icons ">delete</i>
+                            <i ng-click="dialog($event, 'update.html', dato); " class="material-icons ">update</i>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+
+    </div>
+
+</md-content>
